@@ -88,6 +88,46 @@ http://localhost:5025/swagger/index.html
 ```
 
 ## Práticas de Clean Code
+
+O projeto segue as prática de Clean Code e SOLID, sendo bem especifico e bem estruturado. Facilitando a organizando e a escalabilidade da soluçÃo
+
+AdOptimize/
+│
+├── AdOptimize.API/
+│   ├── Controllers/
+│   ├── Properties/
+│   ├── Configuration/
+│   └── Profiles/
+│
+├── AdOptimize.Models/
+│   ├── DTO/
+│   └── Models/
+│
+├── AdOptimize.Services/
+│   ├── Usuario/
+│      ├── UsuarioService.cs
+│      ├── IUsuarioService.cs
+│   ├── Campanha/
+│      ├── CampanhaService.cs
+│      ├── ICampanhaService.cs
+│   ├── Anuncio/
+│   ├── AnuncioService.cs
+│   └── IAnuncioService.cs
+│
+├── AdOptimize.Repository/
+│   ├── Usuario/
+│      ├── UsuarioRepository.cs
+│      ├── IUsuarioRepository.cs
+│   ├── Campanha/
+│      ├── CampanhaRepository.cs
+│      ├── ICampanhaRepository.cs
+│   ├── Anuncio/
+│      ├── AnuncioRepository.cs
+│      └── IAnuncioRepository.cs
+│
+└── AdOptimize.Database/
+    └── OracleDbContext.cs
+
 ## Funções da IA
 ## Integrantes do Grupo
 Tomaz de Oliveira Pecoraro – RM98499
