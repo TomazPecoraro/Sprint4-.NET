@@ -87,7 +87,8 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 http://localhost:5025/swagger/index.html
 ```
 
-
+## Práticas de Clean Code
+## Funções da IA
 ## Integrantes do Grupo
 Tomaz de Oliveira Pecoraro – RM98499
 
