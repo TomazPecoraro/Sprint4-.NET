@@ -128,6 +128,15 @@ AdOptimize/
 └── AdOptimize.Database/
     └── OracleDbContext.cs
 
+## Descrição das Pastas
+
+- **AdOptimize.API**: Contém a lógica de controle da API, incluindo controladores e configurações.
+- **AdOptimize.Models**: Define os modelos e DTOs utilizados na aplicação.
+- **AdOptimize.Services**: Contém a lógica de negócios, dividida em subpastas por funcionalidade.
+- **AdOptimize.Repository**: Implementa o padrão de repositório para acesso a dados.
+- **AdOptimize.Database**: Contém a configuração do contexto do banco de dados.
+
+
 ## Funções da IA
 ## Integrantes do Grupo
 Tomaz de Oliveira Pecoraro – RM98499
