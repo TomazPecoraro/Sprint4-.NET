@@ -68,7 +68,7 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 2. **Acessar a Documentação da API:**
    - A documentação Swagger pode ser acessada navegando para:
      ```markdown
-     https://localhost:5025/swagger
+     http://localhost:5025/swagger/index.html
      ```
 
 ### Testes
@@ -81,10 +81,10 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 
 ### Exemplos de Uso
 
-#### Requisição GET para `api/usuario`
+#### Requisição GET de todas a entidades
 
 ```bash
-curl -X GET "https://localhost:5025/api/usuario" -H "accept: application/json"
+http://localhost:5025/swagger/index.html
 ```
 
 
