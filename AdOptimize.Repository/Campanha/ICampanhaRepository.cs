@@ -1,12 +1,15 @@
-﻿using System;
+﻿using AdOptimize.Models.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AdOptimize.Repository.Campanha
+namespace AdOptimize.Repository
 {
-    internal interface ICampanhaRepository
+    public interface ICampanhaRepository
     {
+        Task<IEnumerable<Campanha>> GetAllAsync();
+        Task<Campanha> GetByIdAsync(int id);
+        Task<Campanha> AddAsync(Campanha campanha);
+        Task<Campanha> UpdateAsync(Campanha campanha);
+        Task DeleteAsync(int id);
     }
 }
