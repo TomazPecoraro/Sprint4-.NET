@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdOptimize.Repository
+namespace AdOptimize.Repository.Campanha
 {
-    internal interface IAnuncioRepository
+    internal interface ICampanhaRepository
     {
     }
 }

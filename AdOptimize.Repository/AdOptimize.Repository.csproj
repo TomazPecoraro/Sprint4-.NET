@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdOptimize.DataBase\AdOptimize.Database.csproj" />
+    <ProjectReference Include="..\AdOptimize.Models\AdOptimize.Models.csproj" />
+  </ItemGroup>
+
 </Project>

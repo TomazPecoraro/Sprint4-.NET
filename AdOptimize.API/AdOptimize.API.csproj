@@ -20,4 +20,9 @@
 	  <Folder Include="Properties\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdOptimize.Models\AdOptimize.Models.csproj" />
+    <ProjectReference Include="..\AdOptimize.Services\AdOptimize.Services.csproj" />
+  </ItemGroup>
+
 </Project>

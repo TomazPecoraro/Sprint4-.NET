@@ -1,4 +1,4 @@
-﻿namespace AdOptimize.Services
+﻿namespace AdOptimize.Services.Usuario
 {
     public class UsuarioService
     {
