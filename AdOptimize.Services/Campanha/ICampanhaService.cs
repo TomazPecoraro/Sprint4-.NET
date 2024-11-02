@@ -9,7 +9,7 @@ namespace AdOptimize.Services
         Task<IEnumerable<CampanhaDTO>> GetAllCampanhasAsync();
         Task<CampanhaDTO> GetCampanhaByIdAsync(int id);
         Task<CampanhaDTO> CreateCampanhaAsync(CampanhaDTO campanhaDto);
-        Task<CampanhaDTO> UpdateCampanhaAsync(CampanhaDTO campanhaDto);
+        Task<CampanhaDTO> UpdateCampanhaAsync(int id, CampanhaDTO campanhaDto);
         Task<bool> DeleteCampanhaAsync(int id);
     }
 }

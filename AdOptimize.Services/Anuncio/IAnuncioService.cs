@@ -9,7 +9,7 @@ namespace AdOptimize.Services
         Task<IEnumerable<AnuncioDTO>> GetAllAnunciosAsync();
         Task<AnuncioDTO> GetAnuncioByIdAsync(int id);
         Task<AnuncioDTO> CreateAnuncioAsync(AnuncioDTO anuncioDto);
-        Task<AnuncioDTO> UpdateAnuncioAsync(AnuncioDTO anuncioDto);
+        Task<AnuncioDTO> UpdateAnuncioAsync(int id, AnuncioDTO anuncioDto); 
         Task<bool> DeleteAnuncioAsync(int id);
     }
 }

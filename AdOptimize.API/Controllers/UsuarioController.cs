@@ -1,13 +1,13 @@
-﻿using AdOptimize.Models.Models;
-using AdOptimize.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
+using AdOptimize.Models.DTOs;
+using AdOptimize.Services;
 
-namespace AdOptimize.API.Controllers
+namespace AdOptimize.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -18,48 +18,92 @@ namespace AdOptimize.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetAllUsuarios()
+        [SwaggerOperation(Summary = "Pega todos os usuários", Description = "Use este endpoint para puxar os valores de todos os usuários do sistema.")]
+        public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var usuarios = await _usuarioService.GetAllUsuariosAsync();
             return Ok(usuarios);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuarioById(int id)
+        [SwaggerOperation(Summary = "Pega o valor de um usuário existente", Description = "Use este endpoint para puxar os dados de um usuário do sistema.")]
+        public async Task<IActionResult> GetById(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
             if (usuario == null)
-                return NotFound();
+            {
+                return NotFound($"Usuário com ID '{id}' não encontrado.");
+            }
             return Ok(usuario);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> CreateUsuario(Usuario usuario)
+        [SwaggerOperation(Summary = "Cria um novo usuário", Description = "Use este endpoint para adicionar um novo usuário ao sistema.")]
+        public async Task<IActionResult> Create([FromBody] UsuarioDTO usuarioDTO)
         {
-            var newUsuario = await _usuarioService.CreateUsuarioAsync(usuario);
-            return CreatedAtAction(nameof(GetUsuarioById), new { id = newUsuario.Id }, newUsuario);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var createdUsuario = await _usuarioService.CreateUsuarioAsync(usuarioDTO);
+
+                if (createdUsuario == null)
+                {
+                    return BadRequest("Erro ao criar o usuário.");
+                }
+
+                return CreatedAtAction(nameof(GetById), new { id = createdUsuario.Id }, createdUsuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); // Captura exceções e retorna uma mensagem de erro
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUsuario(int id, Usuario usuario)
+        [SwaggerOperation(Summary = "Altera um usuário existente", Description = "Use este endpoint para alterar um usuário do sistema.")]
+        public async Task<IActionResult> Update(int id, [FromBody] UsuarioDTO usuarioDTO)
         {
-            if (id != usuario.Id)
-                return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            var updatedUsuario = await _usuarioService.UpdateUsuarioAsync(usuario);
-            if (updatedUsuario == null)
-                return NotFound();
-
+            var result = await _usuarioService.UpdateUsuarioAsync(id, usuarioDTO);
+            if (result == null)
+            {
+                return NotFound($"Usuário com ID '{id}' não encontrado.");
+            }
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        [SwaggerOperation(Summary = "Deleta um usuário existente", Description = "Use este endpoint para deletar um usuário do sistema.")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var deleted = await _usuarioService.DeleteUsuarioAsync(id);
-            if (!deleted)
-                return NotFound();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var result = await _usuarioService.DeleteUsuarioAsync(id);
+            if (!result)
+            {
+                return NotFound($"Usuário com ID '{id}' não encontrado.");
+            }
             return NoContent();
         }
     }

@@ -37,7 +37,7 @@ namespace AdOptimize.Services
             return _mapper.Map<CampanhaDTO>(newCampanha);
         }
 
-        public async Task<CampanhaDTO> UpdateCampanhaAsync(CampanhaDTO campanhaDto)
+        public async Task<CampanhaDTO> UpdateCampanhaAsync(int id, CampanhaDTO campanhaDto)
         {
             var campanha = _mapper.Map<Campanha>(campanhaDto);
             var updatedCampanha = await _campanhaRepository.UpdateAsync(campanha);

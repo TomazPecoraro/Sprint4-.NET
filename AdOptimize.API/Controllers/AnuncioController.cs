@@ -1,13 +1,14 @@
-﻿using AdOptimize.Models.Models;
-using AdOptimize.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Filters;
+using Swashbuckle.AspNetCore.Annotations;
+using AdOptimize.Models.DTOs;
+using AdOptimize.Services;
 
-namespace AdOptimize.API.Controllers
+namespace AdOptimize.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AnuncioController : ControllerBase
     {
         private readonly IAnuncioService _anuncioService;
@@ -17,71 +18,93 @@ namespace AdOptimize.API.Controllers
             _anuncioService = anuncioService;
         }
 
-        // GET: api/Anuncio
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Anuncio>>> GetAnuncios()
+        [SwaggerOperation(Summary = "Pega todos os anúncios", Description = "Use este endpoint para puxar os valores de todos os anúncios do sistema.")]
+        public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); 
+            }
+
             var anuncios = await _anuncioService.GetAllAnunciosAsync();
             return Ok(anuncios);
         }
 
-        // GET: api/Anuncio/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Anuncio>> GetAnuncio(int id)
+        [SwaggerOperation(Summary = "Pega o valor de um anúncio existente", Description = "Use este endpoint para puxar os dados de um anúncio do sistema.")]
+        public async Task<IActionResult> GetById(int id)
         {
-            var anuncio = await _anuncioService.GetAnuncioByIdAsync(id);
-
-            if (anuncio == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState);
             }
 
+            var anuncio = await _anuncioService.GetAnuncioByIdAsync(id);
+            if (anuncio == null)
+            {
+                return NotFound($"Anúncio com ID '{id}' não encontrado.");
+            }
             return Ok(anuncio);
         }
 
-        // POST: api/Anuncio
         [HttpPost]
-        public async Task<ActionResult<Anuncio>> CreateAnuncio(Anuncio anuncio)
+        [SwaggerOperation(Summary = "Cria um novo anúncio", Description = "Use este endpoint para adicionar um novo anúncio ao sistema.")]
+        public async Task<IActionResult> Create([FromBody] AnuncioDTO anuncioDTO)
         {
-            if (anuncio == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            var createdAnuncio = await _anuncioService.CreateAnuncioAsync(anuncio);
-            return CreatedAtAction(nameof(GetAnuncio), new { id = createdAnuncio.Id }, createdAnuncio);
+            try
+            {
+                var createdAnuncio = await _anuncioService.CreateAnuncioAsync(anuncioDTO);
+
+                if (createdAnuncio == null)
+                {
+                    return BadRequest("Erro ao criar o anúncio.");
+                }
+
+                return CreatedAtAction(nameof(GetById), new { id = createdAnuncio.Id }, createdAnuncio);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); // Captura exceções e retorna uma mensagem de erro
+            }
         }
 
-        // PUT: api/Anuncio/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAnuncio(int id, Anuncio anuncio)
+        [SwaggerOperation(Summary = "Altera um anúncio existente", Description = "Use este endpoint para alterar um anúncio do sistema.")]
+        public async Task<IActionResult> Update(int id, [FromBody] AnuncioDTO anuncioDTO)
         {
-            if (id != anuncio.Id)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            var updatedAnuncio = await _anuncioService.UpdateAnuncioAsync(anuncio);
-
-            if (updatedAnuncio == null)
+            var result = await _anuncioService.UpdateAnuncioAsync(id, anuncioDTO);
+            if (result == null)
             {
-                return NotFound();
+                return NotFound($"Anúncio com ID '{id}' não encontrado.");
             }
-
             return NoContent();
         }
 
-        // DELETE: api/Anuncio/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAnuncio(int id)
+        [SwaggerOperation(Summary = "Deleta um anúncio existente", Description = "Use este endpoint para deletar um anúncio do sistema.")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var anuncio = await _anuncioService.GetAnuncioByIdAsync(id);
-            if (anuncio == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState); // Retorna os erros de validação
             }
 
-            await _anuncioService.DeleteAnuncioAsync(id);
+            var result = await _anuncioService.DeleteAnuncioAsync(id);
+            if (!result)
+            {
+                return NotFound($"Anúncio com ID '{id}' não encontrado.");
+            }
             return NoContent();
         }
     }

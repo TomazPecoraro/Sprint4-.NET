@@ -37,7 +37,7 @@ namespace AdOptimize.Services
             return _mapper.Map<UsuarioDTO>(newUsuario);
         }
 
-        public async Task<UsuarioDTO> UpdateUsuarioAsync(UsuarioDTO usuarioDto)
+        public async Task<UsuarioDTO> UpdateUsuarioAsync(int id, UsuarioDTO usuarioDto)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDto);
             var updatedUsuario = await _usuarioRepository.UpdateAsync(usuario);

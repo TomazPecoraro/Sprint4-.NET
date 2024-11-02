@@ -37,7 +37,7 @@ namespace AdOptimize.Services
             return _mapper.Map<AnuncioDTO>(newAnuncio);
         }
 
-        public async Task<AnuncioDTO> UpdateAnuncioAsync(AnuncioDTO anuncioDto)
+        public async Task<AnuncioDTO> UpdateAnuncioAsync(int id, AnuncioDTO anuncioDto)
         {
             var anuncio = _mapper.Map<Anuncio>(anuncioDto);
             var updatedAnuncio = await _anuncioRepository.UpdateAsync(anuncio);

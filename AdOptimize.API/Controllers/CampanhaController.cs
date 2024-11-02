@@ -1,13 +1,13 @@
-﻿using AdOptimize.Models.Models;
-using AdOptimize.Services;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
+using AdOptimize.Models.DTOs;
+using AdOptimize.Services;
 
-namespace AdOptimize.API.Controllers
+namespace AdOptimize.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class CampanhaController : ControllerBase
     {
         private readonly ICampanhaService _campanhaService;
@@ -18,48 +18,92 @@ namespace AdOptimize.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Campanha>>> GetAllCampanhas()
+        [SwaggerOperation(Summary = "Pega todas as campanhas", Description = "Use este endpoint para puxar os valores de todas as campanhas do sistema.")]
+        public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var campanhas = await _campanhaService.GetAllCampanhasAsync();
             return Ok(campanhas);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Campanha>> GetCampanhaById(int id)
+        [SwaggerOperation(Summary = "Pega o valor de uma campanha existente", Description = "Use este endpoint para puxar os dados de uma campanha do sistema.")]
+        public async Task<IActionResult> GetById(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var campanha = await _campanhaService.GetCampanhaByIdAsync(id);
             if (campanha == null)
-                return NotFound();
+            {
+                return NotFound($"Campanha com ID '{id}' não encontrada.");
+            }
             return Ok(campanha);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Campanha>> CreateCampanha(Campanha campanha)
+        [SwaggerOperation(Summary = "Cria uma nova campanha", Description = "Use este endpoint para adicionar uma nova campanha ao sistema.")]
+        public async Task<IActionResult> Create([FromBody] CampanhaDTO campanhaDTO)
         {
-            var newCampanha = await _campanhaService.CreateCampanhaAsync(campanha);
-            return CreatedAtAction(nameof(GetCampanhaById), new { id = newCampanha.Id }, newCampanha);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var createdCampanha = await _campanhaService.CreateCampanhaAsync(campanhaDTO);
+
+                if (createdCampanha == null)
+                {
+                    return BadRequest("Erro ao criar a campanha.");
+                }
+
+                return CreatedAtAction(nameof(GetById), new { id = createdCampanha.Id }, createdCampanha);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); // Captura exceções e retorna uma mensagem de erro
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCampanha(int id, Campanha campanha)
+        [SwaggerOperation(Summary = "Altera uma campanha existente", Description = "Use este endpoint para alterar uma campanha do sistema.")]
+        public async Task<IActionResult> Update(int id, [FromBody] CampanhaDTO campanhaDTO)
         {
-            if (id != campanha.Id)
-                return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            var updatedCampanha = await _campanhaService.UpdateCampanhaAsync(campanha);
-            if (updatedCampanha == null)
-                return NotFound();
-
+            var result = await _campanhaService.UpdateCampanhaAsync(id, campanhaDTO);
+            if (result == null)
+            {
+                return NotFound($"Campanha com ID '{id}' não encontrada.");
+            }
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCampanha(int id)
+        [SwaggerOperation(Summary = "Deleta uma campanha existente", Description = "Use este endpoint para deletar uma campanha do sistema.")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var deleted = await _campanhaService.DeleteCampanhaAsync(id);
-            if (!deleted)
-                return NotFound();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var result = await _campanhaService.DeleteCampanhaAsync(id);
+            if (!result)
+            {
+                return NotFound($"Campanha com ID '{id}' não encontrada.");
+            }
             return NoContent();
         }
     }

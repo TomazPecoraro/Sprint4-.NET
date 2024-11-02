@@ -9,7 +9,7 @@ namespace AdOptimize.Services
         Task<IEnumerable<UsuarioDTO>> GetAllUsuariosAsync();
         Task<UsuarioDTO> GetUsuarioByIdAsync(int id);
         Task<UsuarioDTO> CreateUsuarioAsync(UsuarioDTO usuarioDto);
-        Task<UsuarioDTO> UpdateUsuarioAsync(UsuarioDTO usuarioDto);
+        Task<UsuarioDTO> UpdateUsuarioAsync(int id, UsuarioDTO usuarioDto);
         Task<bool> DeleteUsuarioAsync(int id);
     }
 }
