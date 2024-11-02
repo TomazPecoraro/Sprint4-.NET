@@ -155,7 +155,8 @@ AdOptimize/
 
 │
 └──---- AdOptimize.Database/
-    └──---------- OracleDbContext.cs
+
+   └──---------- OracleDbContext.cs
 
 ## Descrição das Pastas
 
