@@ -1,12 +1,15 @@
-﻿using System;
+﻿using AdOptimize.Models.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AdOptimize.Services.Usuario
+namespace AdOptimize.Services
 {
-    internal interface IUsuarioService
+    public interface IUsuarioService
     {
+        Task<IEnumerable<Usuario>> GetAllUsuariosAsync();
+        Task<Usuario> GetUsuarioByIdAsync(int id);
+        Task<Usuario> CreateUsuarioAsync(Usuario usuario);
+        Task<Usuario> UpdateUsuarioAsync(Usuario usuario);
+        Task<bool> DeleteUsuarioAsync(int id);
     }
 }
