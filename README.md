@@ -87,7 +87,20 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 http://localhost:5025/swagger/index.html
 ```
 
+## Práticas de Clean Code
 
+O projeto segue as prática de Clean Code e SOLID, sendo bem especifico e bem estruturado. Facilitando a organizando e a escalabilidade da soluçÃo
+
+## Descrição das Pastas
+
+- **AdOptimize.API**: Contém a lógica de controle da API, incluindo controladores e configurações.
+- **AdOptimize.Models**: Define os modelos e DTOs utilizados na aplicação.
+- **AdOptimize.Services**: Contém a lógica de negócios, dividida em subpastas por funcionalidade.
+- **AdOptimize.Repository**: Implementa o padrão de repositório para acesso a dados.
+- **AdOptimize.Database**: Contém a configuração do contexto do banco de dados.
+
+
+## Funções da IA
 ## Integrantes do Grupo
 Tomaz de Oliveira Pecoraro – RM98499
 
