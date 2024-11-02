@@ -96,66 +96,66 @@ AdOptimize/
 │
 ├── AdOptimize.API/
 
-│      ├── Controllers/
+│      ├──---- Controllers/
 
-│      ├── Properties/
+│      ├──---- Properties/
 
-│      ├── Configuration/
+│      ├──---- Configuration/
 
-│      └── Profiles/
+│      └──---- Profiles/
 
 │
 ├── AdOptimize.Models/
 
-│      ├── DTO/
+│      ├──---- DTO/
 
-│      └── Models/
+│      └──---- Models/
 
 │
 ├── AdOptimize.Services/
 
-│      ├── Usuario/
+│      ├──---- Usuario/
 
-│            ├── UsuarioService.cs
+│            ├──-------- UsuarioService.cs
 
-│            ├── IUsuarioService.cs
+│            ├──-------- IUsuarioService.cs
 
-│   ├── Campanha/
+│   ├──---- Campanha/
 
-│         ├── CampanhaService.cs
+│         ├──-------- CampanhaService.cs
 
-│         ├── ICampanhaService.cs
+│         ├──-------- ICampanhaService.cs
 
-│   ├── Anuncio/
+│   ├──---- Anuncio/
 
-│         ├── AnuncioService.cs
+│         ├──-------- AnuncioService.cs
 
-│         └── IAnuncioService.cs
+│         └──-------- IAnuncioService.cs
 
 │
 ├── AdOptimize.Repository/
 
-│   ├── Usuario/
+│   ├──---- Usuario/
 
-│         ├── UsuarioRepository.cs
+│         ├──-------- UsuarioRepository.cs
 
-│         ├── IUsuarioRepository.cs
+│         ├──-------- IUsuarioRepository.cs
 
-│   ├── Campanha/
+│   ├──---- Campanha/
 
-│         ├── CampanhaRepository.cs
+│         ├──--------- CampanhaRepository.cs
 
-│         ├── ICampanhaRepository.cs
+│         ├──--------- ICampanhaRepository.cs
 
-│   ├── Anuncio/
+│   ├──---- Anuncio/
 
-│         ├── AnuncioRepository.cs
+│         ├──--------- AnuncioRepository.cs
 
-│         └── IAnuncioRepository.cs
+│         └──--------- IAnuncioRepository.cs
 
 │
-└── AdOptimize.Database/
-    └── OracleDbContext.cs
+└──---- AdOptimize.Database/
+    └──---------- OracleDbContext.cs
 
 ## Descrição das Pastas
 
