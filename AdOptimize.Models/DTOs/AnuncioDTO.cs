@@ -1,0 +1,10 @@
+﻿namespace AdOptimize.Models.DTOs
+{
+    public class AnuncioDTO
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public int CampanhaId { get; set; }
+    }
+}

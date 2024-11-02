@@ -1,5 +1,7 @@
-﻿using AdOptimize.Models.Models;
+﻿using AdOptimize.Models.DTOs;
+using AdOptimize.Models.Models;
 using AdOptimize.Repository;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,34 +10,38 @@ namespace AdOptimize.Services
     public class CampanhaService : ICampanhaService
     {
         private readonly ICampanhaRepository _campanhaRepository;
+        private readonly IMapper _mapper;
 
-        public CampanhaService(ICampanhaRepository campanhaRepository)
+        public CampanhaService(ICampanhaRepository campanhaRepository, IMapper mapper)
         {
             _campanhaRepository = campanhaRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Campanha>> GetAllCampanhasAsync()
+        public async Task<IEnumerable<CampanhaDTO>> GetAllCampanhasAsync()
         {
-            return await _campanhaRepository.GetAllAsync();
+            var campanhas = await _campanhaRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<CampanhaDTO>>(campanhas);
         }
 
-        public async Task<Campanha> GetCampanhaByIdAsync(int id)
+        public async Task<CampanhaDTO> GetCampanhaByIdAsync(int id)
         {
-            return await _campanhaRepository.GetByIdAsync(id);
+            var campanha = await _campanhaRepository.GetByIdAsync(id);
+            return _mapper.Map<CampanhaDTO>(campanha);
         }
 
-        public async Task<Campanha> CreateCampanhaAsync(Campanha campanha)
+        public async Task<CampanhaDTO> CreateCampanhaAsync(CampanhaDTO campanhaDto)
         {
-            return await _campanhaRepository.AddAsync(campanha);
+            var campanha = _mapper.Map<Campanha>(campanhaDto);
+            var newCampanha = await _campanhaRepository.AddAsync(campanha);
+            return _mapper.Map<CampanhaDTO>(newCampanha);
         }
 
-        public async Task<Campanha> UpdateCampanhaAsync(Campanha campanha)
+        public async Task<CampanhaDTO> UpdateCampanhaAsync(CampanhaDTO campanhaDto)
         {
-            var existingCampanha = await _campanhaRepository.GetByIdAsync(campanha.Id);
-            if (existingCampanha == null)
-                return null;
-
-            return await _campanhaRepository.UpdateAsync(campanha);
+            var campanha = _mapper.Map<Campanha>(campanhaDto);
+            var updatedCampanha = await _campanhaRepository.UpdateAsync(campanha);
+            return _mapper.Map<CampanhaDTO>(updatedCampanha);
         }
 
         public async Task<bool> DeleteCampanhaAsync(int id)

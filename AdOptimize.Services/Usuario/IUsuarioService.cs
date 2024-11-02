@@ -1,4 +1,4 @@
-﻿using AdOptimize.Models.Models;
+﻿using AdOptimize.Models.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +6,10 @@ namespace AdOptimize.Services
 {
     public interface IUsuarioService
     {
-        Task<IEnumerable<Usuario>> GetAllUsuariosAsync();
-        Task<Usuario> GetUsuarioByIdAsync(int id);
-        Task<Usuario> CreateUsuarioAsync(Usuario usuario);
-        Task<Usuario> UpdateUsuarioAsync(Usuario usuario);
+        Task<IEnumerable<UsuarioDTO>> GetAllUsuariosAsync();
+        Task<UsuarioDTO> GetUsuarioByIdAsync(int id);
+        Task<UsuarioDTO> CreateUsuarioAsync(UsuarioDTO usuarioDto);
+        Task<UsuarioDTO> UpdateUsuarioAsync(UsuarioDTO usuarioDto);
         Task<bool> DeleteUsuarioAsync(int id);
     }
 }
