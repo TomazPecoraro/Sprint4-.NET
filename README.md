@@ -43,7 +43,7 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 1. **Clone o Repositório:**
    - Clone o repositório para o seu ambiente local usando o seguinte comando:
      ```bash
-     git clone https://github.com/seurepositorio/Sprint4-.NET.git
+     git clone https://github.com/TomazPecoraro/Sprint4-.NET.git
      ```
    - Navegue para o diretório do projeto:
      ```bash
