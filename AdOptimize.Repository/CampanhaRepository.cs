@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdOptimize.Repository
 {
-    internal interface IAdOptimizeRepository
+    internal class CampanhaRepository
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AdOptimize.Repository
 {
-    public class AdOptimizeRepository
+    public class UsuarioRepository
     {
 
     }
