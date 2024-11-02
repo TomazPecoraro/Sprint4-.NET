@@ -84,7 +84,7 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 #### Requisição GET para `api/usuario`
 
 ```bash
-curl -X GET "https://localhost:5116/api/usuario" -H "accept: application/json"
+curl -X GET "https://localhost:5025/api/usuario" -H "accept: application/json"
 ```
 
 
