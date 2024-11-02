@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdOptimize.Models.Models
 {
-    internal class Campanha
+    public class Campanha
     {
         public int Id { get; set; }
         public string Nome { get; set; }

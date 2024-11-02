@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdOptimize.Models.Models
 {
-    internal class Anuncio
+    public class Anuncio
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
