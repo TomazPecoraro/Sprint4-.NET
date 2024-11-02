@@ -24,6 +24,14 @@ namespace AdOptimize.DataBase
                     .WithOne(a => a.Campanha)
                     .HasForeignKey(a => a.CampanhaId);
             }
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+                if (!optionsBuilder.IsConfigured)
+                {
+                    optionsBuilder.UseOracle("OracleConnection",
+                        b => b.MigrationsAssembly("AdOptimize.API"));
+                }
         }
+    }
     }
 
