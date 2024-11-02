@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptimize.Database", "..\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptimize.Models", "..\AdOptimize.Models\AdOptimize.Models.csproj", "{F7092B6F-8DB5-4BC4-9F69-40D7A5316261}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdOptimize.Firebase", "..\AdOptimize.Firebase\AdOptimize.Firebase.csproj", "{760E18A4-0635-4902-A0EE-C484CC3D29FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F7092B6F-8DB5-4BC4-9F69-40D7A5316261}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7092B6F-8DB5-4BC4-9F69-40D7A5316261}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7092B6F-8DB5-4BC4-9F69-40D7A5316261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760E18A4-0635-4902-A0EE-C484CC3D29FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760E18A4-0635-4902-A0EE-C484CC3D29FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760E18A4-0635-4902-A0EE-C484CC3D29FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760E18A4-0635-4902-A0EE-C484CC3D29FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
