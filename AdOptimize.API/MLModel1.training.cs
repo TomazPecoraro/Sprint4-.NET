@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML;
+
+namespace AdOptimize_API
+{
     public partial class MLModel1
     {
         public const string RetrainFilePath =  @"C:\Users\tomaz\Desktop\Sprint4\AdOptimize.ML\DiaHora.csv";
@@ -85,9 +88,9 @@ using Microsoft.ML;
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Forecasting.ForecastBySsa(windowSize:2,seriesLength:10,trainSize:168,horizon:30,outputColumnName:@"Impressões",inputColumnName:@"Impressões",confidenceLowerBoundColumn:@"Impressões_LB",confidenceUpperBoundColumn:@"Impressões_UB");
+            var pipeline = mlContext.Forecasting.ForecastBySsa(windowSize:4,seriesLength:19,trainSize:168,horizon:30,outputColumnName:@"Impressões",inputColumnName:@"Impressões",confidenceLowerBoundColumn:@"Impressões_LB",confidenceUpperBoundColumn:@"Impressões_UB");
 
             return pipeline;
         }
     }
- 
+ }

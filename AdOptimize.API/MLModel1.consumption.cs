@@ -8,61 +8,64 @@ using System.IO;
 using System.Collections.Generic;
 using Microsoft.ML.Transforms.TimeSeries;
 
-public partial class MLModel1
+namespace AdOptimize_API
 {
-    /// <summary>
-    /// model input class for MLModel1.
-    /// </summary>
-    #region model input class
-    public class ModelInput
+    public partial class MLModel1
     {
-        [LoadColumn(2)]
-        [ColumnName(@"Impressões")]
-        public float Impressões { get; set; }
+        /// <summary>
+        /// model input class for MLModel1.
+        /// </summary>
+        #region model input class
+        public class ModelInput
+        {
+            [LoadColumn(2)]
+            [ColumnName(@"Impressões")]
+            public float Impressões { get; set; }
 
-    }
+        }
 
-    #endregion
+        #endregion
 
-    /// <summary>
-    /// model output class for MLModel1.
-    /// </summary>
-    #region model output class
-    public class ModelOutput
-    {
-        [ColumnName(@"Impressões")]
-        public float[] Impressões { get; set; }
+        /// <summary>
+        /// model output class for MLModel1.
+        /// </summary>
+        #region model output class
+        public class ModelOutput
+        {
+            [ColumnName(@"Impressões")]
+            public float[] Impressões { get; set; }
 
-        [ColumnName(@"Impressões_LB")]
-        public float[] Impressões_LB { get; set; }
+            [ColumnName(@"Impressões_LB")]
+            public float[] Impressões_LB { get; set; }
 
-        [ColumnName(@"Impressões_UB")]
-        public float[] Impressões_UB { get; set; }
+            [ColumnName(@"Impressões_UB")]
+            public float[] Impressões_UB { get; set; }
 
-    }
+        }
 
-    #endregion
+        #endregion
 
-    private static string MLNetModelPath = Path.GetFullPath(@"MLModel1.mlnet");
+        private static string MLNetModelPath = Path.GetFullPath(@"C:\Users\tomaz\Desktop\Sprint4\AdOptimize.ML\MLModel1.mlnet");
 
-    public static readonly Lazy<TimeSeriesPredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<TimeSeriesPredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
+        public static readonly Lazy<TimeSeriesPredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<TimeSeriesPredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 
-    /// <summary>
-    /// Use this method to predict on <see cref="ModelInput"/>.
-    /// </summary>
-    /// <param name="input">model input.</param>
-    /// <returns><seealso cref=" ModelOutput"/></returns>
-    public static ModelOutput Predict(ModelInput? input = null, int? horizon = null)
-    {
-        var predEngine = PredictEngine.Value;
-        return predEngine.Predict(input, horizon);
-    }
+        /// <summary>
+        /// Use this method to predict on <see cref="ModelInput"/>.
+        /// </summary>
+        /// <param name="input">model input.</param>
+        /// <returns><seealso cref=" ModelOutput"/></returns>
+        public static ModelOutput Predict(ModelInput? input = null, int? horizon = null)
+        {
+            var predEngine = PredictEngine.Value;
+            return predEngine.Predict(input, horizon);
+        }
 
-    private static TimeSeriesPredictionEngine<ModelInput, ModelOutput> CreatePredictEngine()
-    {
-        var mlContext = new MLContext();
-        ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var schema);
-        return mlModel.CreateTimeSeriesEngine<ModelInput, ModelOutput>(mlContext);
+        private static TimeSeriesPredictionEngine<ModelInput, ModelOutput> CreatePredictEngine()
+        {
+            var mlContext = new MLContext();
+            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var schema);
+            return mlModel.CreateTimeSeriesEngine<ModelInput, ModelOutput>(mlContext);
+        }
     }
 }
 
