@@ -3,11 +3,16 @@
 ## Descrição da Arquitetura
 A API segue a arquitetura **monolítica**, implementada com **ASP.NET Core Web API**, organizando as responsabilidades em camadas:
 
+- **API**: Contém a lógica de controle da API, incluindo controladores e configurações.
 - **Controllers**: Gerenciam requisições HTTP e respostas.
-- **Services**: Contêm a lógica de negócios.
-- **Repository**: Acessa o banco de dados para CRUD.
+- **Services**:  Contém a lógica de negócios, dividida em subpastas por funcionalidade.
+- **Repository**: Implementa o padrão de repositório para acesso a dados.
 - **Models**: Define as entidades e DTOs.
-- **Database**: Configuração do Entity Framework com Oracle.
+- **Database**: Contém a configuração do contexto do banco de dados Oracle.
+- **Tets**: Testes Unitários ultilizando Xunit e Moq
+- **Firebase**: Implementação do Firebase
+- **ML**: ML de Previsão de Impressões em Campanhas
+
 
 ## Design Patterns Utilizados
 1. **Repository Pattern**: Encapsula o acesso ao banco de dados.
@@ -81,6 +86,9 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 
 ### Exemplos de Uso
 
+- Testes de Integração das Entidades Anuncio, Campanha e Usuario
+- Teste da Camada Service de cada Classe
+
 #### Requisição GET de todas a entidades
 
 ```bash
@@ -90,15 +98,6 @@ http://localhost:5025/swagger/index.html
 ## Práticas de Clean Code
 
 O projeto segue as prática de Clean Code e SOLID, sendo bem especifico e bem estruturado. Facilitando a organizando e a escalabilidade da soluçÃo
-
-## Descrição das Pastas
-
-- **AdOptimize.API**: Contém a lógica de controle da API, incluindo controladores e configurações.
-- **AdOptimize.Models**: Define os modelos e DTOs utilizados na aplicação.
-- **AdOptimize.Services**: Contém a lógica de negócios, dividida em subpastas por funcionalidade.
-- **AdOptimize.Repository**: Implementa o padrão de repositório para acesso a dados.
-- **AdOptimize.Database**: Contém a configuração do contexto do banco de dados.
-
 
 ## Funções da IA
 ## Integrantes do Grupo
