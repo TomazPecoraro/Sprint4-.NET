@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+AdOptimize.Firebase/adoptize-2a80a-firebase-adminsdk-85tpl-dac9da5f58.json
