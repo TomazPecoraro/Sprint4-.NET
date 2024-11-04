@@ -115,6 +115,9 @@ As funções de Machine Learning no projeto **Sprint4-.NET** foram desenvolvidas
 
 - **Objetivo**: Permitir o uso fácil das previsões de impressões diretamente na API.
 - **Como Funciona**: A API disponibiliza um endpoint onde o usuário pode enviar os dados da campanha e receber a previsão de impressões, sem complexidades adicionais.
+  ```markdown
+     http://localhost:5025/swagger/predict
+     ```
 
 ### 3. Atualização com Novos Dados
 
