@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
+using AdOptimize.Models.Models;
 
-public interface IFirestoreService
+public interface IFireService
 {
     Task AddCampanha(Campanha campanha);
 }

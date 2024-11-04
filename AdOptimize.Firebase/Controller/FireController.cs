@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using AdOptimize.Models.Models;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CampanhaController : ControllerBase
+public class FireController : ControllerBase
 {
-    private readonly IFirestoreService _firestoreService;
+    private readonly IFireService _firestoreService;
 
-    public CampanhaController(IFirestoreService firestoreService)
+    public FireController(IFireService firestoreService)
     {
         _firestoreService = firestoreService;
     }
@@ -22,7 +21,21 @@ public class CampanhaController : ControllerBase
             return BadRequest("Campanha inválida.");
         }
 
-        await _firestoreService.AddCampanha(campanha);
-        return CreatedAtAction(nameof(CreateCampanha), new { id = campanha.Id }, campanha);
+        try
+        {
+            await _firestoreService.AddCampanha(campanha);
+
+            if (campanha.Id == null)
+            {
+                return StatusCode(500, "Erro ao gerar o ID da campanha.");
+            }
+
+            return CreatedAtAction(nameof(CreateCampanha), new { id = campanha.Id }, campanha);
+        }
+        catch (Exception ex)
+        {
+            // Log da exceção, caso um mecanismo de logging esteja implementado
+            return StatusCode(500, $"Erro ao criar campanha: {ex.Message}");
+        }
     }
 }

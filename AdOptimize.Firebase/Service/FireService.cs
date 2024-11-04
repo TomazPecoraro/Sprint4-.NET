@@ -1,11 +1,12 @@
 ﻿using Google.Cloud.Firestore;
 using System.Threading.Tasks;
+using AdOptimize.Models.Models;
 
-public class FirestoreService : IFirestoreService
+public class FireService : IFireService
 {
     private readonly FirestoreDb _db;
 
-    public FirestoreService()
+    public FireService()
     {
         _db = FirestoreDb.Create("adoptimize-2a80a"); 
     }

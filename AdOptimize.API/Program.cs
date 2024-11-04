@@ -8,7 +8,7 @@ using AdOptimize.DataBase;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IFirestoreService, FirestoreService>();
+builder.Services.AddScoped<IFireService, FireService>();
 
 // Configuração do DbContext com a string de conexão
 builder.Services.AddDbContext<OracleDbContext>(options =>
