@@ -17,4 +17,10 @@
     <ProjectReference Include="..\AdOptimize.Models\AdOptimize.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Credential\adoptimize-2a80a-firebase-adminsdk-85tpl-dac9da5f58.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
