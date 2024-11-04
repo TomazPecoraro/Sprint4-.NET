@@ -46,13 +46,13 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ForecastBySsa",
-        "Score": 111.00565427356358,
-        "RuntimeInSeconds": 0.287,
+        "Score": 134.24326550957946,
+        "RuntimeInSeconds": 0.013,
         "Parameter": {
           "_SCHEMA_": "e0",
           "e0": {
-            "WindowSize": 2,
-            "SeriesLength": 10,
+            "WindowSize": 4,
+            "SeriesLength": 19,
             "TrainSize": 168,
             "Horizon": 30,
             "OutputColumnName": "Impressões",
@@ -66,13 +66,13 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ForecastBySsa",
-        "Score": 111.00565427356358,
-        "RuntimeInSeconds": 0.008,
+        "Score": 134.24326550957946,
+        "RuntimeInSeconds": 0.011,
         "Parameter": {
           "_SCHEMA_": "e0",
           "e0": {
-            "WindowSize": 2,
-            "SeriesLength": 3491,
+            "WindowSize": 4,
+            "SeriesLength": 63,
             "TrainSize": 168,
             "Horizon": 30,
             "OutputColumnName": "Impressões",
@@ -86,13 +86,13 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ForecastBySsa",
-        "Score": 111.00565427356358,
+        "Score": 134.24326550957946,
         "RuntimeInSeconds": 0.01,
         "Parameter": {
           "_SCHEMA_": "e0",
           "e0": {
-            "WindowSize": 2,
-            "SeriesLength": 2173,
+            "WindowSize": 4,
+            "SeriesLength": 174,
             "TrainSize": 168,
             "Horizon": 30,
             "OutputColumnName": "Impressões",
@@ -106,33 +106,33 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ForecastBySsa",
-        "Score": 111.00565427356358,
+        "Score": 134.24326550957946,
+        "RuntimeInSeconds": 0.009,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 4,
+            "SeriesLength": 52,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 134.24326550957946,
         "RuntimeInSeconds": 0.008,
         "Parameter": {
           "_SCHEMA_": "e0",
           "e0": {
-            "WindowSize": 2,
-            "SeriesLength": 168,
-            "TrainSize": 168,
-            "Horizon": 30,
-            "OutputColumnName": "Impressões",
-            "InputColumnName": "Impressões",
-            "ConfidenceLowerBoundColumn": "Impressões_LB",
-            "ConfidenceUpperBoundColumn": "Impressões_UB"
-          }
-        }
-      },
-      {
-        "Version": 1,
-        "Type": "Trial",
-        "TrainerName": "ForecastBySsa",
-        "Score": 111.00565427356358,
-        "RuntimeInSeconds": 0.015,
-        "Parameter": {
-          "_SCHEMA_": "e0",
-          "e0": {
-            "WindowSize": 2,
-            "SeriesLength": 342,
+            "WindowSize": 4,
+            "SeriesLength": 36,
             "TrainSize": 168,
             "Horizon": 30,
             "OutputColumnName": "Impressões",
@@ -159,7 +159,7 @@
     "UseCrossValidation": false,
     "OptimizeMetric": "RMSE",
     "Horizon": 30,
-    "TimeColumn": "Hora de início",
+    "TimeColumn": "Dia",
     "LabelColumn": "Impressões",
     "UseDefaultIndex": false,
     "ValidationOption": {

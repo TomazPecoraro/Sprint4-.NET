@@ -48,6 +48,8 @@
     <ProjectReference Include="..\AdOptimize.Services\AdOptimize.Services.csproj" />
   </ItemGroup>
   <ItemGroup Label="MLModel1">
-    <None Include="MLModel1.mlnet" />
+    <None Include="MLModel1.mlnet">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

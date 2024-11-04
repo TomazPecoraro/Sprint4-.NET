@@ -100,7 +100,7 @@ else
 }
 
 // Definindo o caminho do modelo
-string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "model.zip");
+string modelPath = Path.Combine(Directory.GetCurrentDirectory(), "MLModel1.mlnet");
 var mlContext = new MLContext();
 ITransformer mlModel;
 
