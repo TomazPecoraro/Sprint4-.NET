@@ -1,18 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Credential\**" />
     <Content Remove="Credential\**" />
     <EmbeddedResource Remove="Credential\**" />
     <None Remove="Credential\**" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FirebaseAdmin" Version="3.0.1" />
@@ -24,6 +21,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.ML" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="3.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.60" />
@@ -38,15 +38,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
-	  <Folder Include="Properties\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\AdOptimize.Firebase\AdOptimize.Firebase.csproj" />
+    <ProjectReference Include="..\AdOptimize.ML\AdOptimize.ML.csproj" />
     <ProjectReference Include="..\AdOptimize.Models\AdOptimize.Models.csproj" />
     <ProjectReference Include="..\AdOptimize.Services\AdOptimize.Services.csproj" />
   </ItemGroup>
-
+  <ItemGroup Label="MLModel1">
+    <None Include="MLModel1.mlnet" />
+  </ItemGroup>
 </Project>

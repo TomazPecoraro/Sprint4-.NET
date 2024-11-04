@@ -1,0 +1,171 @@
+﻿{
+  "Scenario": "Forecasting",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\tomaz\\Desktop\\Sprint4\\AdOptimize.ML\\DiaHora.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "Dia",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Hora de início",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Impressões",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 111.00565427356358,
+        "RuntimeInSeconds": 0.287,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 10,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 111.00565427356358,
+        "RuntimeInSeconds": 0.008,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 3491,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 111.00565427356358,
+        "RuntimeInSeconds": 0.01,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 2173,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 111.00565427356358,
+        "RuntimeInSeconds": 0.008,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 168,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 111.00565427356358,
+        "RuntimeInSeconds": 0.015,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 342,
+            "TrainSize": 168,
+            "Horizon": 30,
+            "OutputColumnName": "Impressões",
+            "InputColumnName": "Impressões",
+            "ConfidenceLowerBoundColumn": "Impressões_LB",
+            "ConfidenceUpperBoundColumn": "Impressões_UB"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ForecastBySsa"
+    },
+    "Schema": "e0",
+    "MetricName": "RMSE",
+    "ModelFilePath": "C:\\Users\\tomaz\\Desktop\\Sprint4\\AdOptimize.ML\\MLModel1.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 4,
+  "TrainingOption": {
+    "Version": 2,
+    "Type": "ForecastingTrainingOption",
+    "TrainingTime": 30,
+    "UseCrossValidation": false,
+    "OptimizeMetric": "RMSE",
+    "Horizon": 30,
+    "TimeColumn": "Hora de início",
+    "LabelColumn": "Impressões",
+    "UseDefaultIndex": false,
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

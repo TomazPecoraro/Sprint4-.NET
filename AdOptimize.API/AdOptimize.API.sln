@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptimize.Models", "..\AdO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptimize.Firebase", "..\AdOptimize.Firebase\AdOptimize.Firebase.csproj", "{760E18A4-0635-4902-A0EE-C484CC3D29FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdOptmize.Tests", "..\AdOptmize.Tests\AdOptmize.Tests.csproj", "{45AC369A-2DED-4652-927C-83288DBAE77D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptmize.Tests", "..\AdOptmize.Tests\AdOptmize.Tests.csproj", "{45AC369A-2DED-4652-927C-83288DBAE77D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdOptimize.ML", "..\AdOptimize.ML\AdOptimize.ML.csproj", "{B4AEB130-4CE1-4AFC-9594-16D05CCF9D5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{45AC369A-2DED-4652-927C-83288DBAE77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45AC369A-2DED-4652-927C-83288DBAE77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45AC369A-2DED-4652-927C-83288DBAE77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4AEB130-4CE1-4AFC-9594-16D05CCF9D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4AEB130-4CE1-4AFC-9594-16D05CCF9D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4AEB130-4CE1-4AFC-9594-16D05CCF9D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4AEB130-4CE1-4AFC-9594-16D05CCF9D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
