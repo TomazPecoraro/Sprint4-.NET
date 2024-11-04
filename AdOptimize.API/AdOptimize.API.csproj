@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Credential\adoptimize-2a80a-firebase-adminsdk-85tpl-dac9da5f58.json" />
+    <Compile Remove="Credential\**" />
+    <Content Remove="Credential\**" />
+    <EmbeddedResource Remove="Credential\**" />
+    <None Remove="Credential\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,12 +41,6 @@
 
   <ItemGroup>
 	  <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Credential\adoptimize-2a80a-firebase-adminsdk-85tpl-dac9da5f58.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
