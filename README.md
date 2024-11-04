@@ -11,7 +11,7 @@ A API segue a arquitetura **monolítica**, implementada com **ASP.NET Core Web A
 - **Database**: Contém a configuração do contexto do banco de dados Oracle.
 - **Tets**: Testes Unitários ultilizando Xunit e Moq
 - **Firebase**: Implementação do Firebase
-- **ML**: ML de Previsão de Impressões em Campanhas
+- **ML**: Previsão de Impressões em Campanhas
 
 
 ## Design Patterns Utilizados
@@ -88,6 +88,7 @@ Antes de rodar a API, certifique-se de ter os seguintes itens instalados:
 
 - Testes de Integração das Entidades Anuncio, Campanha e Usuario
 - Teste da Camada Service de cada Classe
+- Utilização do Swagger para teste de todos os EndPoint e Operações CRUD
 
 #### Requisição GET de todas a entidades
 
@@ -99,7 +100,29 @@ http://localhost:5025/swagger/index.html
 
 O projeto segue as prática de Clean Code e SOLID, sendo bem especifico e bem estruturado. Facilitando a organizando e a escalabilidade da soluçÃo
 
-## Funções da IA
+Entendido! Vou simplificar a explicação das funções de ML:
+
+## Funções de Machine Learning (ML)
+
+As funções de Machine Learning no projeto **Sprint4-.NET** foram desenvolvidas para facilitar a previsão de impressões nas campanhas, ajudando a melhorar o desempenho geral.
+
+### 1. Previsão de Impressões
+
+- **Objetivo**: Estimar o número de impressões de uma campanha com base em dados anteriores.
+- **Como Funciona**: O modelo usa dados históricos para prever a quantidade de impressões esperadas, considerando variáveis como orçamento e público.
+
+### 2. Simplicidade e Integração
+
+- **Objetivo**: Permitir o uso fácil das previsões de impressões diretamente na API.
+- **Como Funciona**: A API disponibiliza um endpoint onde o usuário pode enviar os dados da campanha e receber a previsão de impressões, sem complexidades adicionais.
+
+### 3. Atualização com Novos Dados
+
+- **Objetivo**: Melhorar as previsões ao longo do tempo.
+- **Como Funciona**: À medida que mais dados de campanhas são coletados, eles podem ser usados para atualizar o modelo e tornar as previsões mais precisas.
+
+Esse modelo de ML é simples e direto, mas fornece uma visão útil para planejar campanhas com base em previsões.
+
 ## Integrantes do Grupo
 Tomaz de Oliveira Pecoraro – RM98499
 
